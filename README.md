@@ -77,13 +77,13 @@ lab-03/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/Backend-Development-Labs.git
+git clone https://github.com/santhoshreddy6302/santhosh-lab-report-3.git
 ```
 
 ### 2. Open the project folder
 
 ```bash
-cd "Backend-Development-Labs/lab-03"
+cd "santhosh-lab-report-3"
 ```
 
 ### 3. Install dependencies
