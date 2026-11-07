@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Database file (keep seed script reproducible)
+# Note: books.db can be generated automatically via `npm run seed`
+# or auto-created on server startup
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS and temporary office lock files
+.DS_Store
+Thumbs.db
+~$*

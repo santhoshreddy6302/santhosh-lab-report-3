@@ -1,0 +1,238 @@
+{
+  "info": {
+    "_postman_id": "a9876543-210b-4fed-cba9-876543210fed",
+    "name": "Lab 3 - REST API, Query Parameters & Validation",
+    "description": "Postman test collection for Aurora Lab 3 with all query parameters, filters, validation and status codes.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01 - GET All Books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books"]
+        }
+      }
+    },
+    {
+      "name": "02 - GET Book by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "1"]
+        }
+      }
+    },
+    {
+      "name": "03 - Search Books (search_q=The)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books?search_q=The",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books"],
+          "query": [
+            { "key": "search_q", "value": "The" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "04 - Sorting Ascending (order_by=price&order=ASC)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books?order_by=price&order=ASC",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books"],
+          "query": [
+            { "key": "order_by", "value": "price" },
+            { "key": "order", "value": "ASC" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "05 - Sorting Descending (order_by=price&order=DESC)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books?order_by=price&order=DESC",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books"],
+          "query": [
+            { "key": "order_by", "value": "price" },
+            { "key": "order", "value": "DESC" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "06 - Pagination (limit=5&offset=0)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books?limit=5&offset=0",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books"],
+          "query": [
+            { "key": "limit", "value": "5" },
+            { "key": "offset", "value": "0" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "07 - Price Filtering (min_price=200&max_price=350)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books?min_price=200&max_price=350",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books"],
+          "query": [
+            { "key": "min_price", "value": "200" },
+            { "key": "max_price", "value": "350" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "08 - Combined Query (Search + Filter + Sort + Pagination)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books?search_q=The&min_price=200&max_price=500&order_by=price&order=ASC&limit=3&offset=0",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books"],
+          "query": [
+            { "key": "search_q", "value": "The" },
+            { "key": "min_price", "value": "200" },
+            { "key": "max_price", "value": "500" },
+            { "key": "order_by", "value": "price" },
+            { "key": "order", "value": "ASC" },
+            { "key": "limit", "value": "3" },
+            { "key": "offset", "value": "0" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "09 - POST Add Book (201 Created)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"C++ Programming\",\n  \"author\": \"Bjarne Stroustrup\",\n  \"price\": 600,\n  \"pages\": 450\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/books",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books"]
+        }
+      }
+    },
+    {
+      "name": "10 - POST Validation Error (Missing Title - 400 Bad Request)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"author\": \"Bjarne Stroustrup\",\n  \"price\": 600,\n  \"pages\": 450\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/books",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books"]
+        }
+      }
+    },
+    {
+      "name": "11 - PUT Update Book (200 OK)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"The Alchemist Updated\",\n  \"author\": \"Paulo Coelho\",\n  \"price\": 350,\n  \"pages\": 220\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/books/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "1"]
+        }
+      }
+    },
+    {
+      "name": "12 - DELETE Book (200 OK)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/5",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "5"]
+        }
+      }
+    },
+    {
+      "name": "13 - Test Invalid ID (404 Not Found)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "999"]
+        }
+      }
+    }
+  ]
+}
