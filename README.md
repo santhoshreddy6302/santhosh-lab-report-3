@@ -13,9 +13,7 @@
 
 ## Deployment URL
 
-**Render URL:** _(Add your Render URL here after deploying — see the deployment guide below)_
-
-> Example format: `https://lab-03-santhosh.onrender.com/books`
+**Render URL:** https://backend-lab-3-37gu.onrender.com/books
 
 ## Project Description
 
@@ -39,8 +37,7 @@ The database contains 10 book records with details such as book ID, title, autho
 ## Project Structure
 
 ```text
-lab-03/
-│
+Backend lab 3/
 ├── server.js
 ├── initDb.js
 ├── books.db
@@ -50,7 +47,8 @@ lab-03/
 ├── .env.example
 ├── .gitignore
 ├── README.md
-│
+├── postman_collection.json
+├── test-api.js
 └── screenshots/
     ├── render deployment.png
     ├── GET All Books.png
@@ -280,8 +278,6 @@ Expected status code: **200 OK**
 
 ### 14. Test Invalid ID and Missing Records (`404 Not Found`)
 ![Test Invalid ID](screenshots/Test%20Invalid%20ID.png)
-
-> **Note:** Screenshots above are sample reference outputs showing the expected API responses. The actual data served by the live deployment at the Render URL above matches these response formats exactly.
 
 ## Debugging Exercise
 
